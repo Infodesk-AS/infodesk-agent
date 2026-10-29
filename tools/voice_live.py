@@ -46,7 +46,7 @@ GPT_LIVE_VOICES = (
 # the vendor guide asks for role + style + a labelled delegation policy, nothing more. The
 # backend (Hermes) carries the real instructions, tools and memory.
 LIVE_PERSONA = (
-    "You are Hermes, a calm and friendly voice assistant. Speak naturally at an unhurried pace. "
+    "You are InfoDesk Agent, a calm and friendly voice assistant. Speak naturally at an unhurried pace. "
     "Be clear and direct, not overly cheerful. If the user is frustrated, acknowledge it briefly "
     "and focus on the next helpful step.\n\n"
     "Backchannel policy: Use moderate backchannels. Acknowledge naturally without competing with "

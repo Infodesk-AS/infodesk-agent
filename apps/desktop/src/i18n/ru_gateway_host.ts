@@ -6,7 +6,7 @@ export const ruGatewayHost: GatewayHostTranslations = {
   unavailableDesc: 'IPC-мост приложения не предоставляет настройки шлюза.',
   webappHostTitle: 'Хост Hermes',
   webappHostDesc:
-    'Webapp всегда использует хост Hermes, который его обслуживает. Чтобы сменить шлюз, войти в Hermes Cloud или управлять сохранёнными подключениями, используйте приложение Hermes Desktop.',
+    'Webapp всегда использует хост Hermes, который его обслуживает. Чтобы сменить шлюз, войти в Hermes Cloud или управлять сохранёнными подключениями, используйте приложение InfoDesk Desktop.',
   webAccess: {
     title: 'Веб-доступ',
     intro: 'Откройте Hermes этого компьютера с телефона или другого компьютера, войдя через аккаунт Nous. Вошедший может запускать команды на этом компьютере.',

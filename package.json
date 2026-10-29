@@ -1,7 +1,7 @@
 {
   "name": "hermes-agent",
   "version": "1.0.0",
-  "description": "An AI agent with advanced tool-calling capabilities, featuring a flexible toolsets system for organizing and managing tools.",
+  "description": "InfoDesk Agent: an AI agent with advanced tool-calling capabilities, featuring a flexible toolsets system for organizing and managing tools.",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -34,7 +34,7 @@
   "bugs": {
     "url": "https://github.com/NousResearch/Hermes-Agent/issues"
   },
-  "homepage": "https://github.com/NousResearch/Hermes-Agent#readme",
+  "homepage": "https://github.com/Infodesk-AS/infodesk-agent#readme",
   "devDependencies": {
     "@eslint/js": "9.39.5",
     "eslint": "10.12.0",

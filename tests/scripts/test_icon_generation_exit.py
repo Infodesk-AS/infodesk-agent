@@ -28,8 +28,8 @@ def test_svg_readers_accept_bom_without_rewriting_assets(tmp_path, monkeypatch, 
     document = f'<svg{namespaces} viewBox="0 0 20 30">{metadata}{element}</svg>'
     raw = bom + (declaration + document).encode("utf-8")
     path.write_bytes(raw)
-    art = SimpleNamespace(girls={"black": path}, paths={}, backgrounds=tmp_path, colors=None)
-    assert module.girl_path(art, "black") == element
+    art = SimpleNamespace(marks={"black": path}, paths={}, backgrounds=tmp_path, colors=None)
+    assert module.mark_path(art, "black") == element
     inner, width, height = module.background_inner(art, path.name)
     composed = ET.fromstring(f'<svg xmlns="http://www.w3.org/2000/svg">{inner}</svg>')
     assert (width, height) == (20, 30)
@@ -40,7 +40,7 @@ def test_svg_readers_accept_bom_without_rewriting_assets(tmp_path, monkeypatch, 
     path.write_bytes(bom + b"<svg/>")
     art.paths.clear()
     with pytest.raises(AssertionError, match="no <path>"):
-        module.girl_path(art, "black")
+        module.mark_path(art, "black")
     with pytest.raises(AssertionError, match="viewBox"):
         module.background_inner(art, path.name)
 
@@ -129,7 +129,7 @@ def test_icon_portrait_sits_on_the_plain_tile_inside_the_outer_silhouette(monkey
     # never add alpha outside the plate (visible at targetsize-16..30).
     assert [child.tag for child in group[:-1]] == [f"{{{ns['svg']}}}g"]
     assert portrait.get("preserveAspectRatio") == "xMidYMax meet"
-    assert tuple(float(portrait.attrib[key]) for key in ("x", "y", "width", "height")) == module.GIRL_BOXES[name]
+    assert tuple(float(portrait.attrib[key]) for key in ("x", "y", "width", "height")) == module.MARK_BOXES[name]
     clip_path = result.find("svg:defs/svg:clipPath", ns)
     assert clip_path is not None
     assert group.get("clip-path") == f"url(#{clip_path.attrib['id']})"
@@ -138,8 +138,8 @@ def test_icon_portrait_sits_on_the_plain_tile_inside_the_outer_silhouette(monkey
     # The dragged bottom node lands below the tile: the clip, not a gap, ends her.
     _x, y, width, height, _ = geometry
     _, by, bw, bh = art.bboxes[girl]
-    box_y, box_h = module.GIRL_BOXES[name][1], module.GIRL_BOXES[name][3]
-    scale = min(module.GIRL_BOXES[name][2] / bw, box_h / bh)
+    box_y, box_h = module.MARK_BOXES[name][1], module.MARK_BOXES[name][3]
+    scale = min(module.MARK_BOXES[name][2] / bw, box_h / bh)
     lowest_raw_y = max(float(v) for v in re.findall(r"[-+]?\d*\.?\d+", portrait[0].attrib["d"])[1::2])
     lowest_tile_y = box_y + box_h - bh * scale + (lowest_raw_y - by) * scale  # xMidYMax: bottom-aligned
     assert lowest_tile_y == pytest.approx(y + height + width * module.EDGE_OVERSHOOT)
