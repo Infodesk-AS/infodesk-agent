@@ -4,15 +4,15 @@ import type * as Preset from '@docusaurus/preset-classic';
 import relativeDocLinks from './src/remark/relativeDocLinks';
 
 const config: Config = {
-  title: 'Hermes Agent',
-  tagline: 'The self-improving AI agent',
+  title: 'InfoDesk Agent',
+  tagline: 'The self-improving AI agent, run by Infodesk',
   favicon: 'img/favicon.ico',
 
   url: 'https://hermes-agent.nousresearch.com',
   baseUrl: '/docs/',
 
-  organizationName: 'NousResearch',
-  projectName: 'hermes-agent',
+  organizationName: 'Infodesk-AS',
+  projectName: 'infodesk-agent',
 
   onBrokenLinks: 'warn',
 
@@ -97,7 +97,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/hermes-agent-banner.png',
+    image: 'img/infodesk-agent-banner.png',
     // Algolia DocSearch (replaces @easyops-cn/docusaurus-search-local).
     // The local plugin shipped a ~16 MB client-side lunr index that every
     // visitor downloaded and hydrated before their first result; DocSearch
@@ -123,9 +123,9 @@ const config: Config = {
       },
     },
     navbar: {
-      title: 'Hermes Agent',
+      title: 'InfoDesk Agent',
       logo: {
-        alt: 'Hermes Agent',
+        alt: 'InfoDesk Agent',
         src: 'img/logo.png',
         srcDark: 'img/logo-dark.png',
       },
@@ -197,11 +197,12 @@ const config: Config = {
           items: [
             { label: 'Desktop Download', href: 'https://hermes-agent.nousresearch.com/' },
             { label: 'GitHub', href: 'https://github.com/NousResearch/hermes-agent' },
-            { label: 'Nous Research', href: 'https://nousresearch.com' },
+            { label: 'Infodesk', href: 'https://infodesk.no' },
+            { label: 'Upstream: Hermes Agent', href: 'https://github.com/NousResearch/hermes-agent' },
           ],
         },
       ],
-      copyright: `Built by <a href="https://nousresearch.com">Nous Research</a> · MIT License · ${new Date().getFullYear()}`,
+      copyright: `InfoDesk Agent by <a href="https://infodesk.no">Infodesk</a>, built on <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a> by Nous Research · MIT License · ${new Date().getFullYear()}`,
     },
     prism: {
       theme: prismThemes.github,

@@ -1,6 +1,6 @@
 // The desktop product identity — THE single source for every name-shaped
-// value a variant owns. HERMES_DESKTOP_VARIANT=light builds "Hermes
-// Light", the remote-only client; everything else is full "Hermes".
+// value a variant owns. HERMES_DESKTOP_VARIANT=light builds "InfoDesk
+// Light", the remote-only client; bundled builds ship as "InfoDesk Agent".
 //
 // Consumed at build time by electron-builder.config.cjs (packaging
 // identity). electron/product-identity.ts is the typed runtime accessor.
@@ -9,16 +9,16 @@
 'use strict'
 
 const variants = {
-  '': { display: 'Hermes', kebab: 'hermes', pascal: 'Hermes' },
+  '': { display: 'InfoDesk', kebab: 'infodesk', pascal: 'Infodesk' },
   light: {
-    display: 'Hermes Light',
-    kebab: 'hermes-light',
-    pascal: 'HermesLight'
+    display: 'InfoDesk Light',
+    kebab: 'infodesk-light',
+    pascal: 'InfodeskLight'
   },
   bundled: {
-    display: 'Hermes Agent',
-    kebab: 'hermes-bundled',
-    pascal: 'HermesBundled'
+    display: 'InfoDesk Agent',
+    kebab: 'infodesk-bundled',
+    pascal: 'InfodeskBundled'
   }
 }
 
@@ -66,22 +66,24 @@ const identity = {
   store,
   light,
   displayName,
-  appId: `com.nousresearch.${name.kebab}${kebabSuffix}`,
+  appId: `no.infodesk.${name.kebab}${kebabSuffix}`,
   // Store and commit builds do not publish a release feed.
   channel: store || buildCommit ? null : light ? (canary ? 'light-canary' : 'light') : (canary ? 'canary' : 'latest'),
   appNamePascal: `${name.pascal}${pascalSuffix}`,
   artifactNamePascal: name.pascal,
   windowsExecutableName: kebabSuffix ? cliName : displayName,
   cliName,
-  msixAppIdWithOrg: `NousResearch.${name.pascal}${pascalSuffix}`,
+  msixAppIdWithOrg: `Infodesk.${name.pascal}${pascalSuffix}`,
   ...(store
     ? {
         storeMsix: {
           // Partner Center publisher identity (the account's publisher ID) —
-          // validated + re-signed by the Store on submission.
-          identityName: 'NousResearchInc.HermesAgent',
-          publisher: 'CN=EE6D86E4-606F-4E38-B940-AD7248C9D519',
-          publisherDisplayName: 'Nous Research Inc.'
+          // validated + re-signed by the Store on submission. The publisher GUID
+          // below is a placeholder: fill in Infodesk's Partner Center ID before
+          // the first Store submission.
+          identityName: 'Infodesk.InfoDeskAgent',
+          publisher: 'CN=00000000-0000-0000-0000-000000000000',
+          publisherDisplayName: 'Infodesk AS'
         }
       }
     : {})
